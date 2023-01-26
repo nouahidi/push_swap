@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/Users/nouahidi/Desktop/untitled folder 2/push_swap/push_swap",
+            "args": ["44", "-45", "-48","-35", "-18", "-22", "-37", "20", "3", "14", "42", "8", "-43", "-27", "-40", "-24", "-14", "-3", "-7", "48", "-38", "-21", "28", "2", "26", "-4", "21", "33", "50", "-9", "10", "34", "-11", "22", "36", "32", "-50", "39", "38", "31"]
+            "stopAtEntry": false
+            "cwd": "${fileDirname}"
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "/Users/nouahidi/Desktop/untitled folder 2/push_swap/push_swap",
+            "args": ["44", "-45", "-48","-35", "-18", "-22", "-37", "20", "3", "14", "42", "8", "-43", "-27", "-40", "-24", "-14", "-3", "-7", "48", "-38", "-21", "28", "2", "26", "-4", "21", "33", "50", "-9", "10", "34", "-11", "22", "36", "32", "-50", "39", "38", "31"]
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
