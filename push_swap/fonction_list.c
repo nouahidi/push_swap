@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:02:00 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/16 15:19:52 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:01:17 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,17 @@ int	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-// void	del(void *cont)
-// {
-// 	free(cont);
-// }
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*t;
 
-// void	ft_lstdelone(t_list *lst, void (*del)(void*))
-// {
-// 	if (!lst || !del)
-// 		return ;
-// 	del(lst->content);
-// 	free(lst);
-// }
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		t = (*lst)->next;
+		free(*lst);
+		*lst = t;
+	}
+	*lst = NULL;
+}

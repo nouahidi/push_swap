@@ -6,11 +6,37 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:15:29 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/25 15:55:18 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:37:18 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	norm_push(t_var	*v, int j)
+{
+	if ((v->k - j) >= j)
+	{
+		while (j)
+		{
+			rotate_a(v);
+			j--;
+		}
+		push_b(v);
+		if (v->k - 3)
+			push_swap(v);
+	}
+	else
+	{
+		while (j < v->k)
+		{
+			reverse_rotate_a(v);
+			j++;
+		}
+		push_b(v);
+		if (v->k - 3)
+			push_swap(v);
+	}
+}
 
 void	push_swap(t_var *v)
 {
@@ -18,7 +44,7 @@ void	push_swap(t_var *v)
 	int			j;
 
 	t = v->p;
-	v->tp = v->p; 
+	v->tp = v->p;
 	v->cnt++;
 	v->k = ft_lstsize(v->p);
 	if (v->k > 3)
@@ -30,32 +56,9 @@ void	push_swap(t_var *v)
 			t = t->next;
 		}
 		j = ft_search(v);
-		if ((v->k - j) >= j)
-		{
-			while (j)
-			{
-				rotate_a(v);
-				j--;
-			}
-			push_b(v);
-			if (v->k - 3)
-				push_swap(v);
-		}
-		else
-		{
-			while (j < v->k)
-			{
-				reverse_rotate_a(v);
-				j++;
-			}
-			push_b(v);
-			if (v->k - 3)
-				push_swap(v);
-		}
+		norm_push(v, j);
 	}
 	sort_3(v);
 	while (v->pb)
-	{
 		push_a(v);
-	}
 }

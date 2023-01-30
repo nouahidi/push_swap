@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:44:16 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/22 18:39:55 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:54:22 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	position_n(int pt, t_var	*v)
 	}
 	return (0);
 }
+
 int	position_b(int pt, t_var	*v)
 {
 	t_list	*t;
@@ -45,40 +46,40 @@ int	position_b(int pt, t_var	*v)
 	return (0);
 }
 
-void	list_numbering(t_var *v)
+static long long	*numb_tab(long long *tab, t_var	*v)
 {
-	long long	*l;
-	int			i;
-	int			tmp;
-	int			j;
-	t_list		*t;
+	int	j;
+	int	i;
+	int	tmp;
 
-	t = v->p;
-	i = 0;
-	l = malloc (v->k * sizeof(long long));
 	j = v->k;
-	while (t)
-	{
-		l[i++] = t->content;
-		t = t->next;
-	}
 	i = 0;
 	while (j > 0)
 	{
 		while (i < v->k - 1)
 		{
-			if (l[i] > l[i + 1])
+			if (tab[i] > tab[i + 1])
 			{
-				tmp = l[i];
-				l[i] = l[i + 1];
-				l[i + 1] = tmp;
+				tmp = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = tmp;
 			}
 			i++;
 		}
 		i = 0;
 		j--;
 	}
+	return (tab);
+}
+
+void	list_numbering(t_var *v, long long *l)
+{
+	int			i;
+	t_list		*t;
+
+	t = v->p;
 	i = 0;
+	l = numb_tab(l, v);
 	t = v->p;
 	while (t)
 	{
@@ -94,4 +95,5 @@ void	list_numbering(t_var *v)
 		i = 0;
 		t = t->next;
 	}
+	free(l);
 }

@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   str_cmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 22:53:20 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/10 22:57:51 by nouahidi         ###   ########.fr       */
+/*   Created: 2023/01/30 14:55:39 by nouahidi          #+#    #+#             */
+/*   Updated: 2023/01/30 14:57:53 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_putchar(char c)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	write (1, &c, 1);
-}
+	size_t		i;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	i = 0;
+	while ((str1[i] != '\0' || str2[i] != '\0') && i < n)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
+		if ((unsigned char)str1[i] < (unsigned char)str2[i])
+			return (-1);
+		if ((unsigned char)str1[i] > (unsigned char)str2[i])
+			return (1);
+		i++;
 	}
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = nb * -1;
-	}
-	if (nb >= 0 && nb <= 9)
-	{
-		ft_putchar(nb + '0');
-	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
+	return (0);
 }
