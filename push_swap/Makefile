@@ -25,9 +25,9 @@ $(NAME_B):$(BON_OBJ)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(OBJ) $(BON_OBJ)
+	@$(RM) $(OBJ) $(BON_OBJ)
 
 fclean:clean
-	$(RM) $(NAME) $(BON_OBJ)
+	@$(RM) $(NAME) $(NAME_B)
 
 re:fclean all

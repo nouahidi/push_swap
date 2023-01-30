@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:07:06 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/30 22:55:59 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:17:11 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	swap_a_bon(t_var *v)
 
 	if (v->st_a && v->st_a->next)
 	{
-		printf ("here\n");
 		tmp = v->st_a->content;
 		v->st_a->content = v->st_a->next->content;
 		v->st_a->next->content = tmp;

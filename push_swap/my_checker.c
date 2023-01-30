@@ -6,27 +6,11 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:46:37 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/30 22:38:56 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:39:30 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_srt(long long *l, t_var *v)
-{
-	int	i;
-
-	i = 0;
-	while (i < ft_lstsize(v->st_a) - 1)
-	{
-		if (l[i] > l[i + 1])
-			return ;
-		i++;
-	}
-	ft_lstclear(&v->st_a);
-	free(l);
-	exit(0);
-}
 
 int	check_rtt(long long *l, t_var *v)
 {
@@ -78,10 +62,9 @@ int	main(int ac, char **av)
 		if (!check_rtt(l, &v))
 			return (write (1, "error", 5), \
 			ft_lstclear(&v.st_a), free(l), 1);
-		// check_srt(l, &v);
 		if (nom_main_bon(&v) == 0)
-			return (1);
+			return (ft_lstclear(&v.st_a), free(l), 1);
 		else
-			return (0);
+			return (ft_lstclear(&v.st_a), free(l), 0);
 	}
 }
