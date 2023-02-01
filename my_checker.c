@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:46:37 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/30 23:39:30 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:25:26 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ int	check_rtt(long long *l, t_var *v)
 	return (1);
 }
 
-int	nom_main_bon(t_var	*v)
-{
-	if (read_inp(v) == 0)
-		return (write (1, "KO\n", 3), 1);
-	else
-		return (write (1, "OK\n", 3), 0);
-}
-
 int	main(int ac, char **av)
 {
 	long long		*l;
@@ -58,13 +50,14 @@ int	main(int ac, char **av)
 			ft_aatoi_bon(av[v.i], &v);
 			v.i++;
 		}
+		v.st_b = NULL;
 		l = tab_int(&v, v.st_a);
 		if (!check_rtt(l, &v))
-			return (write (1, "error", 5), \
+			return (write (1, "Error", 5), \
 			ft_lstclear(&v.st_a), free(l), 1);
-		if (nom_main_bon(&v) == 0)
-			return (ft_lstclear(&v.st_a), free(l), 1);
+		if (read_inp(&v) == 0)
+			return (write (1, "KO\n", 3), 1);
 		else
-			return (ft_lstclear(&v.st_a), free(l), 0);
+			return (write (1, "OK\n", 3), 0);
 	}
 }

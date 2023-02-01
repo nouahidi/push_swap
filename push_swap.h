@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:51:13 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/30 22:20:40 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:12:44 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char			*ft_strchr(const char *str, int s);
 size_t			ft_strlen(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*get_next_line(int fd);
-int				ft_strncmp(const char *str1, const char *str2, size_t n);
+int				ft_strncmp(const char *str1, const char *str2);
 void			swap_a_bon(t_var *v);
 void			rotate_a_bon(t_var *v);
 void			reverse_rotate_a_bon(t_var *v);
