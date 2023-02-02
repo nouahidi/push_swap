@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:42:35 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/31 11:24:33 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:02:04 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 		while (av[v.i])
 		{
 			if (!check_nb(av[v.i]))
-				return (write (1, "Error", 5), 1);
+				return (write (1, "Error", 5), ft_lstclear(&v.p), 1);
 			ft_aatoi(av[v.i], &v);
 			v.i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:05:15 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:10:43 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:46:27 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,31 @@ static void	norm(t_var *v)
 	t = v->p;
 	while (t)
 	{
-		if (v->tp->content > t->content)
+		if (v->tp->content < t->content)
 			v->tp = t;
 		t = t->next;
 	}
 }
 
+static void	norm2(t_var *v)
+{
+	if (v->p->next == v->tp)
+	{
+		if (v->p->next->position - v->p->position == 2)
+		{
+			swap_a(v);
+			rotate_a(v);
+		}
+		else if (v->p->next->position - v->p->position == 1)
+			reverse_rotate_a(v);
+	}
+	else
+		if (v->p->position > v->p->next->position)
+			swap_a(v);
+}
+
 void	sort_3(t_var *v)
 {
-	t_list	*t;
-	int		j;
-
 	v->tp = v->p;
 	if (ft_lstsize(v->p) == 2)
 	{
@@ -43,15 +57,15 @@ void	sort_3(t_var *v)
 		return ;
 	}
 	norm(v);
-	j = ft_search(v);
-	if (j == 1)
-		rotate_a(v);
-	if (j == 2)
-		reverse_rotate_a(v);
-	t = v->p->next;
-	if (t->content > t->next->content)
+	if (v->p == v->tp)
 	{
-		reverse_rotate_a(v);
-		swap_a(v);
+		if (v->p->position - v->p->next->position == 1)
+		{
+			rotate_a(v);
+			swap_a(v);
+		}
+		else
+			rotate_a(v);
 	}
+	norm2(v);
 }

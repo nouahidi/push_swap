@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:51:13 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/31 10:12:44 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:02:58 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_var
 	char			*str;
 	int				i;
 	long long		*l;
+	long long		*le;
+	char			*st;
 	int				tmp;
 	int				chunk_limit;
 	int				k;

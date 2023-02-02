@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:46:37 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/31 11:25:26 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:01:57 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	check_rtt(long long *l, t_var *v)
 
 int	main(int ac, char **av)
 {
-	long long		*l;
 	t_var			v;
 
 	v.i = 1;
@@ -46,15 +45,15 @@ int	main(int ac, char **av)
 		while (av[v.i])
 		{
 			if (!check_nb(av[v.i]))
-				return (write (1, "error", 5), 1);
+				return (write (1, "error", 5), ft_lstclear(&v.st_a), 1);
 			ft_aatoi_bon(av[v.i], &v);
 			v.i++;
 		}
 		v.st_b = NULL;
-		l = tab_int(&v, v.st_a);
-		if (!check_rtt(l, &v))
+		v.le = tab_int(&v, v.st_a);
+		if (!check_rtt(v.le, &v))
 			return (write (1, "Error", 5), \
-			ft_lstclear(&v.st_a), free(l), 1);
+			ft_lstclear(&v.st_a), free(v.le), 1);
 		if (read_inp(&v) == 0)
 			return (write (1, "KO\n", 3), 1);
 		else

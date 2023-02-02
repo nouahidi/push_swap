@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:15:29 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/30 20:37:18 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:48:06 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	norm_push(t_var	*v, int j)
 {
-	if ((v->k - j) >= j)
+	if ((v->k - j) >= j + 1)
 	{
 		while (j)
 		{

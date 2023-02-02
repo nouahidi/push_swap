@@ -6,7 +6,7 @@
 /*   By: nouahidi <nouahidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:18:41 by nouahidi          #+#    #+#             */
-/*   Updated: 2023/01/31 10:28:10 by nouahidi         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:26:37 by nouahidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	read_norm2(t_var *v)
 	write (1, "Error", 5);
 	ft_lstclear(&v->st_a);
 	ft_lstclear(&v->st_b);
+	free(v->le);
+	free (v->st);
 	exit(0);
 }
 
@@ -64,27 +66,27 @@ void	read_norm(t_var	*v, char *str)
 
 int	read_inp(t_var	*v)
 {
-	char	*str;
-
-	str = get_next_line(0);
-	while (str)
+	v->st = get_next_line(0);
+	while (v->st)
 	{
-		if (ft_strncmp(str, "ra\n") == 0)
+		if (ft_strncmp(v->st, "ra\n") == 0)
 			rotate_a_bon(v);
-		else if (ft_strncmp(str, "sa\n") == 0)
+		else if (ft_strncmp(v->st, "sa\n") == 0)
 			swap_a_bon(v);
-		else if (ft_strncmp(str, "rb\n") == 0)
+		else if (ft_strncmp(v->st, "rb\n") == 0)
 			rotate_b_bon(v);
-		else if (ft_strncmp(str, "sb\n") == 0)
+		else if (ft_strncmp(v->st, "sb\n") == 0)
 			swap_b_bon(v);
-		else if (ft_strncmp(str, "rra\n") == 0)
+		else if (ft_strncmp(v->st, "rra\n") == 0)
 			reverse_rotate_a_bon(v);
-		else if (ft_strncmp(str, "rrb\n") == 0)
+		else if (ft_strncmp(v->st, "rrb\n") == 0)
 			reverse_rotate_b_bon(v);
 		else
-			read_norm(v, str);
-		str = get_next_line(0);
+			read_norm(v, v->st);
+		free(v->st);
+		v->st = get_next_line(0);
 	}
+	free(v->st);
 	if (check_sort_bon(v) == 1 && !v->st_b)
 		return (ft_lstclear(&v->st_a), 1);
 	else
